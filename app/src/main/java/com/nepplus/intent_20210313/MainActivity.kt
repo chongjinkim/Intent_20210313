@@ -22,5 +22,13 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+        moveToSecondBtn.setOnClickListener {
+//            화면 이동은 그대로 -> intent 사용법은 그대로
+
+            val myIntent = Intent(this, MySecondActivity::class.java)
+
+            startActivity(myIntent)
+        }
     }
 }
