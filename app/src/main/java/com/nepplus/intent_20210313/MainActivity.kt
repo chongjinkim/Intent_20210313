@@ -65,6 +65,26 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(myIntent)
         }
+
+        callBtn.setOnClickListener {
+
+            val phoneNum = phoneNumEdT.text.toString()
+
+            val myUri = Uri.parse("tel:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+        }
+
+        smsBtn.setOnClickListener {
+
+            val phoneNum = phoneNumEdT.text.toString()
+
+            val myUri = Uri.parse("smsto:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            myIntent.putExtra("sms_body","이 앱을 공유해 주시면...")
+            startActivity(myIntent)
+
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
