@@ -24,9 +24,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         moveToSecondBtn.setOnClickListener {
+
+            val inputMessage = messageEdit.text.toString()
 //            화면 이동은 그대로 -> intent 사용법은 그대로
 
             val myIntent = Intent(this, MySecondActivity::class.java)
+
+//            티켓에 => 데이터 추가기록
+//            꼬리표를 붙여서 데이터를 달아준다
+
+            myIntent.putExtra("message", inputMessage)
 
             startActivity(myIntent)
         }
