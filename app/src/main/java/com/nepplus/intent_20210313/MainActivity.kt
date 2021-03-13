@@ -2,6 +2,7 @@ package com.nepplus.intent_20210313
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -47,6 +48,22 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this, EditNicknameActivity::class.java)
             startActivityForResult(myIntent, REQ_FOR_NICKNAME)
 
+        }
+
+        dialBtn.setOnClickListener {
+//            전화를 어디로 걸건지 세부 정보를 표현
+
+            val inputPhoneNum = phoneNumEdT.text.toString()
+
+//            uri 어디로 전화 걸 건지 표현
+
+            val myUri = Uri.parse("tel:${inputPhoneNum}")
+
+//            Intent생성 => 출발지 / 도착지 대신, 안드로이드의 어떤 기능?(action) + 세부정보?
+
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+
+            startActivity(myIntent)
         }
     }
 
